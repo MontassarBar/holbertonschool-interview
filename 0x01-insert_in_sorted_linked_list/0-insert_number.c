@@ -23,7 +23,6 @@ if ((*head) == NULL || (*head)->n > node->n)
 	{
 	node->next = (*head);
 	(*head) = node;
-	return (node);
 	}
 else
 {
@@ -32,6 +31,6 @@ while (temp != NULL && temp->next->n < node->n)
 	temp = temp->next;
 node->next = temp->next;
 temp->next = node;
-return (node);
 }
+return (node);
 }
