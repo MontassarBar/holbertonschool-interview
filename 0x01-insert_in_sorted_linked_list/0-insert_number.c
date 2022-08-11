@@ -27,7 +27,7 @@ if ((*head) == NULL || (*head)->n > node->n)
 else
 {
 temp = *head;
-while (temp != NULL && temp->next->n < node->n)
+while (temp->next != NULL && temp->next->n < node->n)
 	temp = temp->next;
 node->next = temp->next;
 temp->next = node;
