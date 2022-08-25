@@ -3,12 +3,11 @@
 '''calculates the fewest number of operations needed to result
  in exactly n H characters in the file.'''
 
-from math import sqrt
-
 
 def minOperations(n):
-    x = sqrt(n)
-    if x ** 2 == n:
-        return int(x * 2)
-    elif n % 2 == 0:
-        return int(n / 2 + 1)
+    x = 0
+    for i in range(2, n):
+        while n % i == 0:
+            x += i
+            n = n / i
+    return x
