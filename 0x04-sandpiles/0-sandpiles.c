@@ -74,7 +74,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 int j, i;
 
 grid_sum(grid1, grid2);
-	if (check_grid_stability(grid1) == 1)
+if (check_grid_stability(grid1) == 1)
 	{
 	printf("==\n");
 	print_grid(grid1);
