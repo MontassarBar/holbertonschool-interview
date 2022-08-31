@@ -111,14 +111,14 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 grid_sum(grid1, grid2);
 if (check_grid_stability(grid1) == 1)
 	{
-	printf("==\n");
+	printf("=\n");
 	print_grid(grid1);
 	while (0 < 1)
 	{
 		sandpiles_calc(grid1);
 		if (check_grid_stability(grid1) == 1)
 		{
-		printf("==\n");
+		printf("=\n");
 		print_grid(grid1);
 		}
 		if (check_grid_stability(grid1) == 0)
