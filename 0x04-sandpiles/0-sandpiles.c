@@ -79,10 +79,11 @@ while (i < 3)
 	j = 0;
 	while (j < 3)
 		{
+			f = 0;
 		if (grid1[i][j] > 3)
 			{
 			f = 0;
-			if (grid1[i][j + 1] <= 3)
+			if (grid1[i][j + 1] <= 3 && i == 2 && j == 1)
 				f = 1;
 			grid1[i][j] = grid1[i][j] - 4;
 			if (j != 2)
