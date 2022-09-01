@@ -71,7 +71,7 @@ while (x < 3)
  */
 void sandpiles_calc(int grid1[3][3])
 {
-int i, j, f;
+int i, j;
 
 i = 0;
 while (i < 3)
@@ -79,12 +79,8 @@ while (i < 3)
 	j = 0;
 	while (j < 3)
 		{
-			f = 0;
 		if (grid1[i][j] > 3)
 			{
-			f = 0;
-			if (grid1[i][j + 1] <= 3 && i == 2 && j == 1)
-				f = 1;
 			grid1[i][j] = grid1[i][j] - 4;
 			if (j != 2)
 				grid1[i][j + 1] = grid1[i][j + 1] + 1;
@@ -94,8 +90,6 @@ while (i < 3)
 				grid1[i + 1][j] = grid1[i + 1][j] + 1;
 			if (i != 0)
 				grid1[i - 1][j]	= grid1[i - 1][j] + 1;
-			if (f == 1)
-				j++;
 			}
 		j++;
 		}
