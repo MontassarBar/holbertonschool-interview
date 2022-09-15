@@ -11,19 +11,19 @@ try:
     for line in sys.stdin:
         splited_line = line.split(" ")
         if len(splited_line) == 9:
+            lines += 1
+            file_size += int(splited_line[8])
             for key in dict.keys():
                 if key == splited_line[7]:
                     dict[key] += 1
-            lines += 1
-            file_size += int(splited_line[8])
             if lines == 10:
-                print("File size:", file_size)
+                lines = 0
+                print("File size: {:d}".format(file_size))
                 for key, value in dict.items():
                     if value != 0:
                         print("{}: {:d}".format(key, value))
-                lines = 0
 except KeyboardInterrupt:
-    print("File size:", file_size)
+    print("File size: {:d}".format(file_size))
     for key, value in dict.items():
         if value != 0:
             print("{}: {:d}".format(key, value))
