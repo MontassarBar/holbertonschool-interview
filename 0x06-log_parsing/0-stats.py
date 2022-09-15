@@ -13,14 +13,16 @@ try:
             lines += 1
             file_size += int(splited_line[8])
             for key in dict.keys():
-                if (key == splited_line[7]):
+                if key == splited_line[7]:
                     dict[key] += 1
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
                 for key, value in dict.items():
-                    print(key + ": " + str(value))
+                    if value != 0:
+                        print(key + ": " + str(value))
 except KeyboardInterrupt:
     print("File size:", file_size)
     for key, value in dict.items():
-        print(key + ": " + str(value))
+        if value != 0:
+            print(key + ": " + str(value))
