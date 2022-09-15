@@ -20,9 +20,9 @@ try:
                 print("File size:", file_size)
                 for key, value in dict.items():
                     if value != 0:
-                        print(key + ": " + str(value))
+                        print("{}: {:d}".format(key, value))
 except KeyboardInterrupt:
     print("File size:", file_size)
     for key, value in dict.items():
         if value != 0:
-            print(key + ": " + str(value))
+            print("{}: {:d}".format(key, value))
