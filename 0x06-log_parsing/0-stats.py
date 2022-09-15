@@ -21,13 +21,13 @@ try:
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
-                for key, value in dict.items():
+                for key, value in sorted(dict.items()):
                     if value != 0:
                         print(key + ": " + str(value))
 except Exception:
     pass
 finally:
     print("File size:", file_size)
-    for key, value in dict.items():
+    for key, value in sorted(dict.items()):
         if value != 0:
             print(key + ": " + str(value))
