@@ -17,11 +17,11 @@ try:
             lines += 1
             file_size += int(splited_line[8])
             if lines == 10:
-                lines = 0
                 print("File size:", file_size)
                 for key, value in dict.items():
                     if value != 0:
                         print("{}: {:d}".format(key, value))
+                lines = 0
 except KeyboardInterrupt:
     print("File size:", file_size)
     for key, value in dict.items():
