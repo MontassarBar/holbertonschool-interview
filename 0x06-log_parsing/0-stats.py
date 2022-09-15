@@ -12,9 +12,9 @@ try:
         splited_line = line.split(" ")
         if len(splited_line) > 2:
             lines += 1
-            file_size += int(splited_line[8])
+            file_size += int(splited_line[-1])
             for key in dict.keys():
-                if key == splited_line[7]:
+                if key == splited_line[-2]:
                     dict[key] += 1
             if lines == 10:
                 lines = 0
