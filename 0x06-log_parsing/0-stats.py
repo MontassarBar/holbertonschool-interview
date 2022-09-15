@@ -10,13 +10,14 @@ dict = {"200": 0, "301": 0, "400": 0, "401": 0,
 try:
     for line in sys.stdin:
         splited_line = line.split(" ")
-        if len(splited_line) > 2:
+        if len(splited_line) == 9 and splited_line[
+            4] == "\"GET" and splited_line[
+                5] == "/projects/260" and splited_line[6] == "HTTP/1.1\"":
             lines += 1
-            s = splited_line[-1]
+            file_size += int(splited_line[8])
             for key in dict.keys():
-                if key == splited_line[-2]:
+                if key == splited_line[7]:
                     dict[key] += 1
-            file_size += int(s)
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
@@ -24,7 +25,7 @@ try:
                     if value != 0:
                         print(key + ": " + str(value))
 except Exception:
-        pass
+    pass
 finally:
     print("File size:", file_size)
     for key, value in dict.items():
