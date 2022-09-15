@@ -18,14 +18,14 @@ try:
                     dict[key] += 1
             if lines == 10:
                 lines = 0
-                print("File size: {:d}".format(file_size))
+                print("File size:", file_size)
                 for key, value in dict.items():
                     if value != 0:
-                        print("{}: {:d}".format(key, value))
+                        print(key + ": " + str(value))
 except Exception:
         pass
 finally:
-    print("File size: {:d}".format(file_size))
+    print("File size:", file_size)
     for key, value in dict.items():
         if value != 0:
-            print("{}: {:d}".format(key, value))
+            print(key + ": " + str(value))
