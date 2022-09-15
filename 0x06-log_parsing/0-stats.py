@@ -10,7 +10,7 @@ dict = {"200": 0, "301": 0, "400": 0, "401": 0,
 try:
     for line in sys.stdin:
         splited_line = line.split(" ")
-        if len(splited_line) == 9:
+        if len(splited_line) > 2:
             lines += 1
             s = splited_line[-1]
             for key in dict.keys():
