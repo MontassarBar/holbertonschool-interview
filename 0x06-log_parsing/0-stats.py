@@ -15,9 +15,10 @@ try:
                 5] == "/projects/260" and splited_line[6] == "HTTP/1.1\"":
             lines += 1
             file_size += int(splited_line[8])
-            for key in dict.keys():
-                if key == splited_line[7]:
-                    dict[key] += 1
+            if splited_line[7].isdigit():
+                for key in dict.keys():
+                    if key == splited_line[7]:
+                        dict[key] += 1
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
