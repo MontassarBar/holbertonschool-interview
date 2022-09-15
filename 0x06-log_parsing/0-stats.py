@@ -10,12 +10,12 @@ dict = {"200": 0, "301": 0, "400": 0, "401": 0,
 try:
     for line in sys.stdin:
         splited_line = line.split(" ")
-        if len(splited_line) > 2:
-            lines += 1
-            file_size += int(splited_line[-1])
+        if len(splited_line) == 9:
             for key in dict.keys():
-                if key == splited_line[-2]:
+                if key == splited_line[7]:
                     dict[key] += 1
+            lines += 1
+            file_size += int(splited_line[8])
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
