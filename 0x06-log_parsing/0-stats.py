@@ -22,7 +22,9 @@ try:
                 for key, value in dict.items():
                     if value != 0:
                         print("{}: {:d}".format(key, value))
-except KeyboardInterrupt:
+except Exception:
+        pass
+finally:
     print("File size:", file_size)
     for key, value in dict.items():
         if value != 0:
