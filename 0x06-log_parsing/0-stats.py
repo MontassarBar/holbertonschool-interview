@@ -10,11 +10,13 @@ try:
     for line in sys.stdin:
         splited_line = line.split(" ")
         if len(splited_line) == 9:
-            lines += 1
-            file_size += int(splited_line[8])
+            s = splited_line[-1]
+            c = splited_line[-2]
             for key in dict.keys():
-                if key == splited_line[7]:
+                if key == c:
                     dict[key] += 1
+            file_size += int(s)
+            lines += 1
             if lines == 10:
                 lines = 0
                 print("File size:", file_size)
