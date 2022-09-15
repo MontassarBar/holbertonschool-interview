@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-from multiprocessing.sharedctypes import Value
 import sys
+
 
 lines = 0
 file_size = 0
