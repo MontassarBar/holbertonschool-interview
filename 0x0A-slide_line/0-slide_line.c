@@ -1,5 +1,4 @@
 #include "slide_line.h"
-
 /**
 *left_direction - a given line slided & merged to the left
 *@line: points to an array of integers
