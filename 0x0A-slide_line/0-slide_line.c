@@ -46,10 +46,10 @@ for (h = 0; h < size; h++)
 **/
 void right_direction(int *line, size_t size)
 {
-size_t x, i = 0;
-int y = 0, z, h, c;
+size_t  i = 0, c = 0;
+int y = 0, z, h, x;
 int arr[size], arr2[size];
-for (x = 0; x < size; x++)
+for (x = size - 1; x > -1; x--)
 {
 	if (line[x] != 0)
 	{
@@ -71,13 +71,12 @@ for (z = 0; z < y; z += 1)
 		i++;
 	}
 }
-c = i - 1;
 for (h = size - 1; h > -1; h--)
 {
-	if (c > -1)
+	if (c < i)
 	{
 		line[h] = arr2[c];
-		c--;
+		c++;
 	}
 	else
 		line[h] = 0;
