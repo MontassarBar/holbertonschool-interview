@@ -1,4 +1,5 @@
 #include "slide_line.h"
+#define LINE_SIZE   32
 /**
 *left_direction - a given line slided & merged to the left
 *@line: points to an array of integers
@@ -8,7 +9,7 @@ void left_direction(int *line, size_t size)
 {
 size_t x, i = 0, h;
 int y = 0, z;
-int arr[size], arr2[size];
+int arr[LINE_SIZE], arr2[LINE_SIZE];
 for (x = 0; x < size; x++)
 {
 	if (line[x] != 0)
@@ -48,7 +49,7 @@ void right_direction(int *line, size_t size)
 {
 size_t  i = 0, c = 0;
 int y = 0, z, h, x;
-int arr[size], arr2[size];
+int arr[LINE_SIZE], arr2[LINE_SIZE];
 for (x = size - 1; x > -1; x--)
 {
 	if (line[x] != 0)
