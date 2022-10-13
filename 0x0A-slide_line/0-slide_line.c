@@ -92,10 +92,14 @@ for (h = size - 1; h > -1; h--)
 int slide_line(int *line, size_t size, int direction)
 {
 if (direction == SLIDE_LEFT)
+{
 	left_direction(line, size);
+	return (1);
+}
 else if (direction == SLIDE_RIGHT)
+{
 	right_direction(line, size);
-else
-	return (0);
-return (1);
+	return (1);
+}
+return (0);
 }
