@@ -19,6 +19,8 @@ if (left > right)
 mid = left + (right - left) / 2;
 root_node->parent = parent;
 root_node->n = array[mid];
+root_node->left = NULL;
+root_node->right = NULL;
 root_node->left = convert_array_to_AVL(array, left, mid - 1, root_node);
 root_node->right = convert_array_to_AVL(array, mid + 1, right, root_node);
 return (root_node);
