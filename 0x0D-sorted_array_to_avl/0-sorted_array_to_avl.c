@@ -1,9 +1,5 @@
 #include "binary_trees.h"
 #include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 /**
  * convert_array_to_AVL - convert a sorted array into an AVL tree
  * @array: pointer to the array to be converted
