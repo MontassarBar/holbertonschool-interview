@@ -11,10 +11,11 @@
 avl_t *convert_array_to_AVL(int *array, int left, int right, avl_t *parent)
 {
 int mid;
-avl_t *root_node = malloc(sizeof(avl_t));
-if (root_node == NULL)
-	return (NULL);
+avl_t *root_node;
 if (left > right)
+	return (NULL);
+root_node = malloc(sizeof(avl_t));
+if (root_node == NULL)
 	return (NULL);
 mid = left + (right - left) / 2;
 root_node->parent = parent;
