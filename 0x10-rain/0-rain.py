@@ -29,7 +29,7 @@ def rain(walls):
                 water += count * walls[z]
             else:
                 water += count * walls[y]
-            if z != x - 1:
+            if z != x:
                 y += count + 1
         else:
             y += 1
