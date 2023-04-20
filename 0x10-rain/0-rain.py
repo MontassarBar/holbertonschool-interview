@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-
+'''calculate how many square units of water will be retained after it rains'''
 
 def rain(walls):
+    '''rain'''
     x = len(walls) - 1
     y = 0
     water = 0
@@ -9,11 +10,11 @@ def rain(walls):
         x = x - 1
     if walls[0] == 0:
         y = y + 1
-    while(y < x):
+    while y < x:
         if (y + 1) <= x:
             z = y + 1
         count = 0
-        while(walls[z] == 0):
+        while walls[z] == 0:
             z += 1
             count += 1
         if walls[z] < walls[y]:
