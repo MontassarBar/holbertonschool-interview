@@ -18,7 +18,7 @@ def rain(walls):
         while walls[y] == 0:
             y += 1
     while y < x:
-        if (walls[y + 1] == 0):
+        if walls[y + 1] == 0:
             if (y + 1) <= x:
                 z = y + 1
             count = 0
