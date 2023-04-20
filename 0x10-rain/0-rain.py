@@ -4,6 +4,8 @@
 
 def rain(walls):
     '''rain'''
+    if len(walls) == 0:
+        return 0
     x = len(walls) - 1
     y = 0
     water = 0
