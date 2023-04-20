@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def rain(walls):
     x = len(walls) - 1
     y = 0
@@ -22,4 +23,3 @@ def rain(walls):
         if z != x - 1:
             y += count + 1
     return water
-    
