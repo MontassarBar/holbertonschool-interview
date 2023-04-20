@@ -18,16 +18,19 @@ def rain(walls):
         while walls[y] == 0:
             y += 1
     while y < x:
-        if (y + 1) <= x:
-            z = y + 1
-        count = 0
-        while walls[z] == 0:
-            z += 1
-            count += 1
-        if walls[z] < walls[y]:
-            water += count * walls[z]
+        if (walls[y + 1] == 0):
+            if (y + 1) <= x:
+                z = y + 1
+            count = 0
+            while walls[z] == 0:
+                z += 1
+                count += 1
+            if walls[z] < walls[y]:
+                water += count * walls[z]
+            else:
+                water += count * walls[y]
+            if z != x - 1:
+                y += count + 1
         else:
-            water += count * walls[y]
-        if z != x - 1:
-            y += count + 1
+            y += 1
     return water
