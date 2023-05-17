@@ -21,25 +21,18 @@ void swap(heap_t *node_1, heap_t *node_2)
 **/
 void heapify(heap_t *root)
 {
-heap_t *lchild = root->left, *rchild = root->right;
-
-	if (rchild == NULL)
+	if (!root)
 		return;
-
-	if (lchild->left == NULL && rchild->left != NULL)
+	if (root->right && (root->n < root->right->n))
 	{
-		lchild->left = rchild->left;
-		rchild->left->parent = lchild;
-		rchild->left = NULL;
-	}
-	if (lchild->right == NULL && rchild->right != NULL)
-	{
-		lchild->right = rchild->right;
-		rchild->right->parent = lchild;
-		rchild->right = NULL;
-	}
-	heapify(root->left);
+	swap(root, root->right);
 	heapify(root->right);
+	}
+	else if (root->left && (root->n < root->left->n))
+	{
+	swap(root, root->left);
+	heapify(root->left);
+	}
 }
 
 /**
