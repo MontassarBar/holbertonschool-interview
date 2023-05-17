@@ -66,7 +66,7 @@ int heap_extract(heap_t **root)
 	heap_t *min_node;
 	int value;
 
-	if (!(*root) == NULL || !root)
+	if (!(*root) || !root)
 		return (0);
 	min_node = minHeap(*root);
 	value = min_node->n;
