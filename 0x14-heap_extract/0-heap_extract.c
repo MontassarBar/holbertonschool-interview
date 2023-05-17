@@ -2,79 +2,133 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/**
-*swap - swap 2 nodes values
-*@node_1: node_1
-*@node_2: node_2
-**/
-void swap(heap_t *node_1, heap_t *node_2)
-{
-	int temp = node_1->n;
-
-	node_1->n = node_2->n;
-	node_2->n = temp;
-}
+heap_t *ln(heap_t *root);
+int max_prof(heap_t *node);
+heap_t *find_ln(int max_prof, int cor_prof, heap_t *node);
+void downt(heap_t *node);
 
 /**
-*heapify - creating a heap data structure from a binary tree
-*@root: root node
-**/
-void heapify(heap_t *root)
-{
-	if (!root)
-		return;
-	if (root->right && (root->n < root->right->n))
-	{
-	swap(root, root->right);
-	heapify(root->right);
-	}
-	else if (root->left && (root->n < root->left->n))
-	{
-	swap(root, root->left);
-	heapify(root->left);
-	}
-}
+ * heap_extract - Extracts the root node of a Max Binary Heap
+ * @root: Double pointer to the root node of the binary heap
+ * Return: Value stored in @root (root_node->n)
+ */
 
-/**
-* minHeap - get the min node of the heap
-* @root: root node
-* Return: min node
-**/
-heap_t *minHeap(heap_t *root)
-{
-	heap_t *min_node;
-
-	if (!root)
-		return (0);
-	if (!root->left && !root->right)
-		return (root);
-	if (root->left && (!root->right || root->left->n >= root->right->n))
-		min_node = root->left;
-	else
-		min_node = root->right;
-	swap(root, min_node);
-	return (minHeap(min_node));
-}
-
-/**
-* heap_extract - extracts the root node of a Max Binary Heap
-* @root: root
-* Return: the value stored in the root node
-**/
 int heap_extract(heap_t **root)
 {
-	heap_t *min_node;
-	int value;
+	heap_t *tmp;
+	heap_t *cor;
+	int swp_val;
 
-	if (!(*root) || !root)
+	cor = *root;
+
+	if (*root == NULL)
 		return (0);
-	min_node = minHeap(*root);
-	value = min_node->n;
-	if (min_node->parent->left == min_node)
-		min_node->parent->left = NULL;
+
+	if (!(cor->left) && !(cor->right))
+	{
+		swp_val = cor->n;
+		free(*root);
+		*root = NULL;
+		return (swp_val);
+	}
+
+	tmp = ln(*root);
+	if (tmp->parent->right)
+		tmp->parent->right = NULL;
 	else
-		min_node->parent->right = NULL;
-	free(min_node);
-	heapify(*root);
-	return (value);
+		tmp->parent->left = NULL;
+
+	swp_val = cor->n;
+	cor->n = tmp->n;
+
+	downt(*root);
+
+
+	free(tmp);
+	return (swp_val);
+}
+
+/**
+ * ln - Finds the last node of the binary heap
+ * @root: Root node of the binary heap
+ * Return: Pointer to the last node.
+ */
+
+heap_t *ln(heap_t *root)
+{
+	int prof;
+
+	prof = max_prof(root);
+	return (find_ln(prof, 1, root));
+}
+
+/**
+ * max_prof - Finds the max prof of a binary tree
+ * @node: Root node of the binary tree
+ * Return: prof of the binary tree
+ */
+
+int max_prof(heap_t *node)
+{
+	int left, right;
+
+	if (!node)
+		return (0);
+
+	left = max_prof(node->left);
+	right = max_prof(node->right);
+
+	return (((left > right) ? left : right) + 1);
+}
+
+/**
+ * find_ln - Finds the node at the end of the binary tree
+ * @max_prof: Max prof of the binary tree
+ * @cor_prof: corent prof of the binary tree
+ * @node: Root node of the binary tree
+ * Return: Pointer to the node at the end of the binary tree
+ */
+
+heap_t *find_ln(int max_prof, int cor_prof, heap_t *node)
+{
+	heap_t *left = NULL, *right = NULL;
+
+	if (cor_prof != max_prof)
+	{
+		left = find_ln(max_prof, cor_prof + 1, node->left);
+		right = find_ln(max_prof, cor_prof + 1, node->right);
+	}
+	else
+		return (node);
+
+	return ((right) ? right : left);
+}
+
+/**
+ * downt - Moves the value of @node down the tree by successively.
+ * @node: Node from which the value will be sifted down the binary tree
+ * Return: Void
+ */
+
+void downt(heap_t *node)
+{
+	heap_t *tempg = NULL;
+	int tval;
+
+	if (node->right)
+		tempg = ((node->right->n > node->left->n)
+				? node->right : node->left);
+	else if (node->left)
+		tempg = node->left;
+
+	if (tempg)
+	{
+		if (tempg->n > node->n)
+		{
+			tval = tempg->n;
+			tempg->n = node->n;
+			node->n = tval;
+			downt(tempg);
+		}
+	}
 }
