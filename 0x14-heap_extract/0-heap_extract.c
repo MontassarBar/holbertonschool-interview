@@ -9,10 +9,10 @@
 **/
 void swap(heap_t *node_1, heap_t *node_2)
 {
-	int temp = node_2->n;
+	int temp = node_1->n;
 
-	node_2->n = node_1->n;
-	node_1->n = temp;
+	node_1->n = node_2->n;
+	node_2->n = temp;
 }
 
 /**
