@@ -127,5 +127,8 @@ int main(int argc, char *argv[])
 		_putchar(result[i] + '0');
 	}
 	_putchar('\n');
+	free(num_1);
+	free(num_2);
+	free(result);
 	return (0);
 }
