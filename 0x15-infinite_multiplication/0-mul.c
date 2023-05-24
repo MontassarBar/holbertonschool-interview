@@ -121,7 +121,10 @@ int main(int argc, char *argv[])
 	to_array(num_2, y);
 	result = multi(num_1, num_2, len_1, len_2);
 	for (i = result_len; i >= 0; i--)
-
+	{
+		if (result[i] > 0)
+			break;
+	}
 	for (; i >= 0; i--)
 	{
 		_putchar(result[i] + '0');
