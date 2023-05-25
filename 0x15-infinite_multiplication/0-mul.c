@@ -1,6 +1,5 @@
 #include "holberton.h"
 #include <stdlib.h>
-#include <stdbool.h>
 
 /**
  * main - program that multiplies two positive numbers
