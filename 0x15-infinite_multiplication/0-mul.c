@@ -2,183 +2,131 @@
 #include <stdlib.h>
 
 /**
- * _malloc - allocates memory for an array and initializes it
- *
- * @num: the array
- * @size: tthe size of array
- * Return: the allocated array
- */
-int *_malloc(int *num, int size)
+ * main - program that multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: given arguments
+ * Return: returns 0 if everything is fine otherwise 98 with an error
+ **/
+int main(int argc, char **argv)
 {
-	int x;
-
-	num = malloc(sizeof(int) * size);
-	if (!num)
-	{
-		error();
-		exit(98);
-	}
-	for (x = 0; x < size; x++)
-	{
-		num[x] = 0;
-	}
-	return (num);
-}
-
-/**
- * to_array - fills an array
- *
- * @array: the array to be filled
- * @str: the content of array
- */
-void to_array(int *array, char *str)
-{
-	int x;
-
-	for (x = 0; x < _strlen(str); x++)
-	{
-		array[x] = str[x] - '0';
-	}
-}
-
-/**
- * multi - multiplie two nums
- *
- * @num_1: num_1
- * @num_2: num_2
- * @len_1: num_1 lenght
- * @len_2: num_2 lenght
- * Return: num_1 * num_2
- */
-int *multi(int *num_1, int *num_2, int len_1, int len_2)
-{
-	int *res = NULL, res_len = len_1 + len_2, x, y, z, tmp;
-
-	res = _malloc(res, res_len);
-	for (x = 0; x < len_1; x++)
-	{
-		for (y = 0; y < len_2; y++)
-		{
-			res[x + y] += num_1[x] * num_2[y];
-		}
-	}
-	for (z = 0; z < res_len; z++)
-	{
-		tmp = res[z] / 10;
-		res[z] = res[z] % 10;
-		res[z + 1] = res[z + 1] + tmp;
-	}
-	return (res);
-}
-
-/**
- * only_degit - checks if an str contains only digits
- *
- * @str: str
- */
-void only_degit(char *str)
-{
-	int x;
-
-	for (x = 0; x < _strlen(str); x++)
-	{
-		if (str[x] > '9' || str[x] < '0')
-		{
-			error();
-			exit(98);
-		}
-	}
-}
-
-/**
- * main - multiplies two positive numbers
- *
- * @argc: argument count
- * @argv: argument vector
- * Return: 0
- */
-int main(int argc, char *argv[])
-{
-	int *num_1 = NULL, *num_2 = NULL, *result = NULL, i;
-	char *x, *y;
-	int len_1 = _strlen(argv[1]), len_2 = _strlen(argv[2]);
-	int result_len = len_1 + len_2;
+	int i, y, len, len2, zero;
 
 	if (argc != 3)
-	{
-		error();
-		exit(98);
-	}
-	only_degit(argv[1]);
-	only_degit(argv[2]);
-	num_1 = _malloc(num_1, len_1);
-	num_2 = _malloc(num_2, len_2);
-	result = _malloc(result, result_len);
-	x = _strrev(argv[1]);
-	y = _strrev(argv[2]);
-	to_array(num_1, x);
-	to_array(num_2, y);
-	result = multi(num_1, num_2, len_1, len_2);
-	for (i = result_len; i >= 0; i--)
-	{
-		if (result[i] > 0)
-			break;
-	}
-	for (; i >= 0; i--)
-	{
-		_putchar(result[i] + '0');
-	}
-	_putchar('\n');
+		_print_error();
 
+	len = _strlen(argv[1]);
+	len2 = _strlen(argv[2]);
+
+	for (y = 1; y <= 2; y++)
+	{
+		i = 0;
+		zero = 0;
+		while (argv[y][i] != '\0')
+		{
+			if ((_isDigit(argv[y][i]) == 0) ||
+					(_isDigit(argv[y][i]) == 2 && i != 0) ||
+					(_isDigit(argv[y][i]) == 2 && _strlen(argv[y]) == 1))
+				_print_error();
+			if (argv[y][i] != '0')
+				zero++;
+			i++;
+		}
+		if (zero == 0)
+		{
+			_putchar('0');
+			_putchar('\n');
+			return (0);
+		}
+	}
+
+	_mul(argv[1], argv[2], len, len2);
 	return (0);
 }
-
 /**
- * _strrev - reverse a string
- *
- * @str: str
- * Return: str
- */
-char *_strrev(char *str)
-{
-char tmp;
-int x;
-
-for (x = 0; x < _strlen(str) / 2; x++)
-{
-	tmp = str[x];
-	str[x] = str[_strlen(str) - 1 - x];
-	str[_strlen(str) - 1 - x] = tmp;
-}
-return (str);
-}
-
-/**
- * _strlen - count the lenght of a string
- *
- * @str: str
- * Return: len
- */
+ * _strlen - Calculates the length of a string
+ * @str: String to calculate
+ * Return: length of a string
+ **/
 int _strlen(char *str)
 {
-	int x;
+	int i = 0;
 
-	x = 0;
-	while (str[x])
-		x++;
-	return (x);
+	while (str[i] != '\0')
+		i++;
+
+	return (i);
 }
-
 /**
- * error - error
- */
-void error(void)
+ * _mul - Multiply two numbers and return the res as a string
+ * @nb: first number
+ * @nb2: second number
+ * @nblength: length of first number
+ * @nb2length: length of second number
+ **/
+void _mul(char *nb, char *nb2, int nblength, int nb2length)
 {
-		_putchar('E');
-		_putchar('r');
-		_putchar('r');
-		_putchar('o');
-		_putchar('r');
-		_putchar('\n');
-		exit(98);
+	int *res = NULL;
+	int a = 0, b = 0;
+	int counter = 0, counter2 = 0;
+	int _nb = 0, _nb2 = 0, sum = 0, next = 0, i = 0;
+
+	res = malloc(sizeof(int) * (nblength + nb2length + 1));
+
+	for (a = nblength - 1, b = nb2length - 1, counter = 0, counter2 = 0;
+			a >= 0; counter++, a--, counter2 = 0)
+	{
+		_nb = nb[a] - '0';
+
+		for (b = nb2length - 1, next = 0; b >= 0; b--, counter2++)
+		{
+			_nb2 = nb2[b] - '0';
+
+			sum = _nb * _nb2 + next + res[counter + counter2];
+			next = sum / 10;
+
+			res[counter + counter2] = sum % 10;
+		}
+
+		if (next > 0)
+			res[counter + counter2] += next;
+	}
+
+	i = nblength + nb2length + 1;
+
+	while (res[i] == 0)
+		i--;
+
+	for (; i >= 0; i--)
+		_putchar(res[i] + '0');
+	_putchar('\n');
+}
+/**
+ * _isDigit - Checks if the character is a digit.
+ * @c: Character to check
+ * Return: 1 if the character is a digit otherwise 0
+ **/
+int _isDigit(char c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	if (c == 45)
+		return (2);
+	return (0);
+}
+/**
+ * _print_error - Prints a default error message when an error occurs.
+ **/
+void _print_error(void)
+{
+	int i = 0;
+	char *msg = "Error";
+
+	while (msg[i] != '\0')
+	{
+		_putchar(msg[i]);
+		i++;
+	}
+
+	_putchar('\n');
+	exit(98);
 }
