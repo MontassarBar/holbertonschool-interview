@@ -99,7 +99,7 @@ void only_degit(char *str)
  */
 int main(int argc, char *argv[])
 {
-	int *num_1 = NULL, *num_2 = NULL, *result = NULL, i, e;
+	int *num_1 = NULL, *num_2 = NULL, *result = NULL, i;
 	char *x, *y;
 	int len_1 = _strlen(argv[1]), len_2 = _strlen(argv[2]);
 	int result_len = len_1 + len_2;
@@ -122,9 +122,9 @@ int main(int argc, char *argv[])
 	for (i = result_len; i >= 0; i--)
 	{
 		if (result[i] > 0)
-			e = i;
+			break;
 	}
-	for (i = e; i >= 0; i--)
+	for (; i >= 0; i--)
 	{
 		_putchar(result[i] + '0');
 	}
