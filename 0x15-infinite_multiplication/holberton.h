@@ -1,9 +1,11 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
 
-int _strlen(char *str);
 int _putchar(char c);
-char *_strrev(char *str);
-void error(void);
+int _strlen(char *str);
+void _print_error(void);
+int _isDigit(char c);
+void _mul(char *nb, char *nb2, int nblength, int nb2length);
+
 
 #endif
