@@ -109,7 +109,8 @@ int main(int argc, char *argv[])
 		error();
 		exit(98);
 	}
-
+	only_degit(argv[1]);
+	only_degit(argv[2]);
 	num_1 = _malloc(num_1, len_1);
 	num_2 = _malloc(num_2, len_2);
 	result = _malloc(result, result_len);
