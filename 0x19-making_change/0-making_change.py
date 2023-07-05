@@ -15,6 +15,7 @@ def makeChange(coins, total):
         z += 1
         if x + coins[y] > total:
             y += 1
-    if x == total:
-        return z
-    return -1
+    f = x - total
+    if f != 0:
+        return -1
+    return z
