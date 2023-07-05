@@ -11,10 +11,10 @@ def makeChange(coins, total):
     y = 0
     z = 0
     while x < total:
-        x += coins[y]
-        z += 1
         if x + coins[y] > total:
             y += 1
+        x += coins[y]
+        z += 1
     if x == total:
         return z
     else:
