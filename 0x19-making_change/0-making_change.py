@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''making_change'''
+"""making_change"""
 
 
 def makeChange(coins, total):
-    '''Change comes from within'''
+    """Change comes from within"""
     if total <= 0:
         return 0
     coins.sort(reverse=True)
