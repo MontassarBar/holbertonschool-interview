@@ -6,7 +6,7 @@ def makeChange(coins, total):
     '''Change comes from within'''
     if total <= 0:
         return 0
-    coins.sort(reverse=True)
+    coins.sort()
     x = 0
     for coin in coins:
         x += total // coin
