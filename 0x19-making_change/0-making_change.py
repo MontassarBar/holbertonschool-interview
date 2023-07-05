@@ -17,5 +17,4 @@ def makeChange(coins, total):
         z += 1
     if x == total:
         return z
-    else:
-        return -1
+    return -1
